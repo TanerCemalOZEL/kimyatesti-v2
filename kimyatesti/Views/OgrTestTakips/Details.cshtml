@@ -1,0 +1,74 @@
+﻿@model kimyatesti.Models.OgrTestTakip
+
+@{
+//Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>OgrTestTakip</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Ogrenci.OgrName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Ogrenci.OgrName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TestGroup.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TestGroup.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Testler.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Testler.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AtanmaTarihi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AtanmaTarihi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TamamlanmaTarihi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TamamlanmaTarihi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CevapList)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CevapList)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

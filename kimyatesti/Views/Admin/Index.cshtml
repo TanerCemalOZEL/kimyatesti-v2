@@ -1,0 +1,69 @@
+﻿@model IEnumerable<kimyatesti.identity.AppUser>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Admin kontrolleri</h2>
+
+<div class="panel panel-primary">
+
+
+    <div class="my-3">
+        @Html.ActionLink("Sınıf ekle", "Index", "Sinifs", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Unite ekle", "Index", "Unites", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Konu ekle", "Index", "Konus", null, new { @class = "btn btn-success" })
+    </div>
+    <div class="my-3">
+        @Html.ActionLink("Soru ekle", "Index", "Sorus", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Test ekle", "Index", "Tests", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Soru - test bağla", "Index", "SoruTestBinds", null, new { @class = "btn btn-success" })
+    </div>
+    <div class="my-3">
+        @Html.ActionLink("Test grubu ekle", "Index", "TestGroups", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Testi gruba bağla", "Index", "TestGroupBinds", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Öğrenciyi gruba bağla", "Index", "OgrenciTestGroupBinds", null, new { @class = "btn btn-success" })
+    </div>
+    <div class="my-3">
+        @Html.ActionLink("Öğrenci avatarları", "Index", "OgrenciAvatars", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Test takip tablosu", "Index", "OgrTestTakips", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Soru history", "Index", "SoruHistories", null, new { @class = "btn btn-success" })
+    </div>
+
+
+    <hr />
+    <div class="panel-heading">
+        Kullanıcılar
+    </div>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Kullanıcı adı</th>
+            <th>Email</th>
+        </tr>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    Kullanıcı yok
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>@item.UserName</td>
+                    <td>@item.Email</td>
+                </tr>
+            }
+        }
+
+    </table>
+
+</div>

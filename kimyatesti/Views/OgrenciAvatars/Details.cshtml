@@ -1,0 +1,58 @@
+﻿@model kimyatesti.Models.OgrenciAvatar
+
+@{
+//Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>OgrenciAvatar</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.OgrName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OgrName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.OgrEmail)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.OgrEmail)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Kurum)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Kurum)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MevcutSinif)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MevcutSinif)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

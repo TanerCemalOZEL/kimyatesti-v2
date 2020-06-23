@@ -1,0 +1,68 @@
+﻿@model kimyatesti.Models.Register
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kimyatesti.com</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/RegisterStyle.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="container">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form">
+
+                <div class="form-control">
+                    <span>
+                        @Html.TextBoxFor(i => i.Name, new { @placeholder = "Adınız"})
+                        <i class="fa fa-address-card"></i>
+                    </span>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <span>
+                        @Html.TextBoxFor(i => i.Surname, new { @placeholder = "Soyadınız"})
+                        <i class="fa fa-address-card"></i>
+                    </span>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <span>
+                        @Html.TextBoxFor(i => i.Email, new { @placeholder = "E-posta adresiniz"})
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                    <small>Geçerli bir mail adresi giriniz</small>
+                </div>
+                <div class="form-control er">
+                    <span>
+                        @Html.TextBoxFor(i => i.Password, new { @placeholder = "Parolanız", type = "password", autocomplete = "off" })
+                        <i class="fa fa-lock"></i>
+                    </span>
+                    <small></small>
+                </div>
+
+                @Html.ValidationSummary()
+
+                <button id="btnSubmit" type="submit">Kaydol</button>
+                <div class="loginLinks">
+                    <a href="/Account/Login">Zaten hesabım var.</a>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+
+</html>

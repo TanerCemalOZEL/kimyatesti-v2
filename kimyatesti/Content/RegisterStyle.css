@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+:root {
+    --success-color: #2ecc71;
+    --error-color: #f5bb00;
+    --darker-color: #141f28;
+    --dark-color: #00475d;
+    --blue-color-1: #1b998b;
+    --blue-color-2: #20b2aa;
+    --orange-color: #f5bb00;
+    --red-color: #db504a;
+    --green-color-1: #91c11f;
+    --green-color-2: #c0ff2f;
+    --light-color: #ebffb0;
+    --grey-color: #f7f7f7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../Assets/Img/bg1.jpg');
+    /*overflow: hidden;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 40px #00000080, 2px 2px 12px rgba(0, 0, 0, 0.6) inset, -2px -2px 12px rgba(255, 255, 255, .3) inset;
+    width: 400px;
+}
+
+#pg1 {
+    display: block;
+}
+
+#pg2 {
+    display: none;
+}
+
+.form {
+    padding: 30px 40px;
+}
+
+.logoBox {
+    text-align: center;
+    margin: 40px 0 40px;
+}
+
+.logoImg {
+    width: 40%;
+    opacity: .9;
+}
+
+
+/* input areas  */
+
+.form-control {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-control label {
+    color: #ccc;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control input {
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding-left: 40px;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #333;
+    /* margin-bottom: 40px; */
+}
+
+.form-control input:hover {
+    box-shadow: 2px 2px 5px #555;
+    background-color: #ebffb0;
+}
+
+.form-control span {
+    position: relative;
+}
+
+.form-control i {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    color: #333;
+    font-size: 18px;
+}
+
+.form-control.success input {
+    border: 1px solid var(--success-color);
+}
+
+.form-control.error input {
+    border: 1px solid red;
+}
+
+.form-control input:focus {
+    outline: 0;
+    border-color: #777;
+}
+
+.form-control small {
+    color: var(--orange-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+.form-control.error small {
+    visibility: visible;
+}
+
+.form-control p{
+    color: #ffffffcc;
+}
+
+/* Butonlar */
+
+.form button {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    background: linear-gradient(to right top, var(--dark-color), var(--blue-color-1), #00bf72, var(--green-color-1));
+    border: 0;
+    border-radius: 4px;
+    color: #000;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.form button:hover {
+    cursor: pointer;
+    box-shadow: 4px 4px 5px #77777799;
+    background: linear-gradient(to right top, var(--dark-color), #00bf72, var(--green-color-2));
+}
+
+.form button:focus {
+    outline-color: #fff;
+}
+
+
+/*  üye ol ve şifremi unuttum linkleri */
+
+.loginLinks {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.loginLinks a {
+    text-decoration: none;
+    color: #ffffff60;
+    transition: color 0.3s ease-out 0s;
+}
+
+.loginLinks a:hover {
+    color: #ffffff99;
+}
+
+ul{
+    padding-left: 0;
+    text-align: center;
+    justify-content: center;
+}
+li{
+    color: #fff;
+    list-style: none;
+}
+
+.formHeading{
+    color: #ffffff95;
+    padding: 0;
+    margin: 0;
+}

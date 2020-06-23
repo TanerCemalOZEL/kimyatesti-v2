@@ -1,0 +1,66 @@
+﻿@model kimyatesti.Models.Soru
+
+@{
+//Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Soru</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Konu.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Konu.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ImgPath)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ImgPath)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Cevap)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Cevap)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Tuyo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Tuyo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Zorluk)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Zorluk)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

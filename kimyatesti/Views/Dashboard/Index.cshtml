@@ -1,0 +1,83 @@
+﻿@model IEnumerable<kimyatesti.Models.Test>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<hr />
+<div class="container pt-4">
+    <div class="row summaryRow">
+        <div class="col-md-4">
+            <div class="card card-1">
+                <div class="card-body">137</div>
+                <div class="card-text">soru çözdün</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 ">
+            <div class="card card-1">
+                <div class="card-body">15</div>
+                <div class="card-text">test çözdün</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4">
+            <div class="card card-1">
+                <div class="card-body"> 7 </div>
+                <div class="card-text">test bekliyor</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* örnek bar *@
+
+<div class="mt-5 shadowy bg-bar col-12">
+    <div class="card-header">
+        Sıradaki testler
+    </div>
+</div>
+
+<div class="row cardRow">
+
+    @*<div class="col-sm-6 mt-2">
+            <div class="card cardColoredLine">
+                <div class="card-body">
+                    <h5 class="card-title">TYT - 3 <small class="cardDate">17.06.2020</small></h5>
+                    <p class="card-text">Yalnızca ilk üç üniteden sorular içeren orta güçlükte bir deneme sınavıdır.</p>
+                </div>
+                <div class="container mb-4">
+                    <a href="#" class="btn btn-custom btn-sm">Teste git</a>
+                </div>
+            </div>
+        </div>*@
+
+    @foreach (var test in Model)
+        {
+            <div class="col-sm-6 mt-2 mb-2">
+                <div class="card card-ds1">
+                    <div class="card-body">
+                        <h5 class="card-title">@test.Name<small class="cardDate">17.06.2020</small></h5>
+                        <p class="card-text">@test.Aciklama</p>
+                    </div>
+                    <div class="container mb-4">
+                        <a href="/Utility/AkordiyonTest/@test.Id" class="btn btn-custom btn-sm">Teste git</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+</div>
+
+
+
+@*<ul>
+
+    @foreach (var test in Model)
+    {
+        <li>
+            @test.Name <br /> <br />
+            @test.Aciklama
+        </li>
+    }
+
+</ul>*@
+

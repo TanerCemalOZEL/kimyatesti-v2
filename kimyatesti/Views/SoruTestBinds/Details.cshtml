@@ -1,0 +1,42 @@
+﻿@model kimyatesti.Models.SoruTestBind
+
+@{
+//Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>SoruTestBind</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Soru.ImgPath)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Soru.ImgPath)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Test.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Test.Name)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿@model kimyatesti.Models.OgrTestTakip
+
+@{
+//Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>OgrTestTakip</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Ogrenci.OgrName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Ogrenci.OgrName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TestGroup.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TestGroup.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Testler.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Testler.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AtanmaTarihi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AtanmaTarihi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TamamlanmaTarihi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TamamlanmaTarihi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CevapList)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CevapList)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

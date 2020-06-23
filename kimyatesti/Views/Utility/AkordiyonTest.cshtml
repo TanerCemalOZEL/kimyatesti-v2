@@ -1,0 +1,131 @@
+﻿@*@{
+        ViewBag.Title = "AkordiyonTest";
+    }
+
+    <hr />
+
+    @Html.Action("Accordion5", new { id = @ViewBag.Data1 })*@
+
+<hr />
+
+@model IEnumerable<kimyatesti.Models.Soru>
+@{
+    int soruNumber = 1;
+    var itemSayisi = Model.ToList().Count();
+}
+
+<div class="accordion" id="accordionExample">
+    <div id="testName" class="card bg-light card-header soruTextOpt pt-2 text-center">
+        @ViewBag.data1
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-header card-header-Opt">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="btn soruTextOpt" type="button" data-toggle="collapse" data-target="#acc@(soruNumber)">
+                            Soru @soruNumber
+                        </div>
+                    </div>
+                    <div class="col-7" style="text-align: right;">
+                        <div id="@soruNumber" style="display:inline;">
+                            <span class="btnOpt">A</span>
+                            <span class="btnOpt">B</span>
+                            <span class="btnOpt">C</span>
+                            <span class="btnOpt">D</span>
+                            <span class="btnOpt">E</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            @if (Model.ToList().First() == item)
+            {
+                <div id="acc@(soruNumber)" class="collapse show text-center" data-parent="#accordionExample">
+                    <div class="card-body p-0">
+                        <img class="soruImgOpt" src="~/Assets/@item.ImgPath">
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div id="acc@(soruNumber)" class="collapse text-center" data-parent="#accordionExample">
+                    <div class="card-body p-0">
+                        <img class="soruImgOpt" src="~/Assets/@item.ImgPath">
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+        soruNumber++;
+    }
+
+    <div @*id="soruSayisi@(soruNumber)"*@ class="card text-center">
+        @using (Html.BeginForm())
+        {
+            @Html.TextBox("UserAns", "test0", new { @class = "d-none" });
+            <button type="submit" class="btn soruTextOpt mt-2" onclick="return confirm('Emin misiniz?')">
+                TESTİ KAYDET
+            </button>
+        }
+    </div>
+</div>
+
+<script src="~/Scripts/accordion5.js"></script>
+<script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+
+<script>
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var testAdi = document.querySelector("#testName").textContent;
+        var cevapString = localStorage.getItem('cevapStore' + testAdi);
+        if (cevapString !== null) {
+            $(document.querySelector("#acc1")).collapse('hide');
+            textBox.value = cevapString;
+            var bx = cevapString.split("");
+            for (var i = 0; i < bx.length; i++) {
+                let soruIndex = i + 1;
+                let optList = document.querySelector(`#${CSS.escape(soruIndex)}`).children;
+                let optX;
+                switch (bx[i]) {
+                    case 'A':
+                        optX = 0;
+                        break;
+                    case 'B':
+                        optX = 1;
+                        break;
+                    case 'C':
+                        optX = 2;
+                        break;
+                    case 'D':
+                        optX = 3;
+                        break;
+                    case 'E':
+                        optX = 4;
+                        break;
+                    default:
+                        optX = 5;
+                        break;
+                }
+                if (optX != 5) {
+                    optList[optX].classList.add("btnOptSelected");
+                    document.querySelector(`#acc${soruIndex}`).parentNode.classList.add("cardClicked");
+                }
+            }
+        } else {
+            let initTextBox = "";
+            for (var i = 0; i < @itemSayisi; i++) {
+                initTextBox += "0";
+            }
+            textBox.value = initTextBox;
+        }
+    });
+
+</script>
+

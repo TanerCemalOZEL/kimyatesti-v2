@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var customErrorMessage = TempData["loggedInError"] ?? string.Empty;
+}
+
+@if ((string)customErrorMessage != "")
+{
+
+    <div class="alert alert-warning" role="alert">
+        @customErrorMessage
+        <a href="/Account/Logout" class="text-danger">Çıkış yap</a>mak ister misiniz?
+    </div>
+}
+
+<hr />
+
+@if (User.Identity.IsAuthenticated)
+{
+    <label class="label label-info">
+        @User.Identity.Name
+    </label>
+
+    <a href="/Account/Logout" class="btn btn-danger">Çıkış yap</a>
+}
+else
+{
+    <a href="/Account/Login" class="btn btn-success">Giriş yap</a>
+    <a href="/Account/Register" class="btn btn-primary">Kaydol</a>
+
+}
