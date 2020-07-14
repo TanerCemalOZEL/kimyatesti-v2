@@ -145,6 +145,13 @@
     <Content Include="Assets\Soru\a0125143.png" />
     <Content Include="Assets\Soru\a0131113.png" />
     <Content Include="Assets\Soru\a0145136.png" />
+    <Content Include="Assets\Soru\t0013114.svg" />
+    <Content Include="Assets\Soru\t0024122.svg" />
+    <Content Include="Assets\Soru\t0032133.svg" />
+    <Content Include="Assets\Soru\t0045143.svg" />
+    <Content Include="Assets\Soru\t0051232.svg" />
+    <Content Include="Assets\Soru\t0062232.svg" />
+    <Content Include="Assets\Soru\t0072221.svg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -205,31 +212,10 @@
     <Compile Include="Migrations\202006120404346_DateTimeInfo.Designer.cs">
       <DependentUpon>202006120404346_DateTimeInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202006181647419_Avatar-TestGroup-Connection-Revised.cs" />
-    <Compile Include="Migrations\202006181647419_Avatar-TestGroup-Connection-Revised.Designer.cs">
-      <DependentUpon>202006181647419_Avatar-TestGroup-Connection-Revised.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006181650214_Avatar-TestGroup-Connection-Revised2.cs" />
-    <Compile Include="Migrations\202006181650214_Avatar-TestGroup-Connection-Revised2.Designer.cs">
-      <DependentUpon>202006181650214_Avatar-TestGroup-Connection-Revised2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006181653102_fix3.cs" />
-    <Compile Include="Migrations\202006181653102_fix3.Designer.cs">
-      <DependentUpon>202006181653102_fix3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006190600073_fix2.cs" />
-    <Compile Include="Migrations\202006190600073_fix2.Designer.cs">
-      <DependentUpon>202006190600073_fix2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006190827447_fix31.cs" />
-    <Compile Include="Migrations\202006190827447_fix31.Designer.cs">
-      <DependentUpon>202006190827447_fix31.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006201136570_ogrTestTakip_ICollections_added.cs" />
-    <Compile Include="Migrations\202006201136570_ogrTestTakip_ICollections_added.Designer.cs">
-      <DependentUpon>202006201136570_ogrTestTakip_ICollections_added.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AkordiyonTestSonucViewModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
+    <Compile Include="Models\dashboardViewModel.cs" />
     <Compile Include="Models\Konu.cs" />
     <Compile Include="Models\OgrenciAvatar.cs" />
     <Compile Include="Models\OgrenciTestGroupBind.cs" />
@@ -237,6 +223,7 @@
     <Compile Include="Models\Soru.cs" />
     <Compile Include="Models\SoruHistory.cs" />
     <Compile Include="Models\SoruTestBind.cs" />
+    <Compile Include="Models\SummaryViewModel.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\TestGroup.cs" />
     <Compile Include="Models\TestGroupBind.cs" />
@@ -331,8 +318,10 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Utility\Accordion5.cshtml" />
     <Content Include="Views\Utility\AkordiyonTest.cshtml" />
+    <Content Include="Views\Shared\_AccLayout.cshtml" />
+    <Content Include="Views\Account\Contact.cshtml" />
+    <Content Include="Views\Utility\AkordiyonTestSonuc.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -349,24 +338,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006120404346_DateTimeInfo.resx">
       <DependentUpon>202006120404346_DateTimeInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006181647419_Avatar-TestGroup-Connection-Revised.resx">
-      <DependentUpon>202006181647419_Avatar-TestGroup-Connection-Revised.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006181650214_Avatar-TestGroup-Connection-Revised2.resx">
-      <DependentUpon>202006181650214_Avatar-TestGroup-Connection-Revised2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006181653102_fix3.resx">
-      <DependentUpon>202006181653102_fix3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006190600073_fix2.resx">
-      <DependentUpon>202006190600073_fix2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006190827447_fix31.resx">
-      <DependentUpon>202006190827447_fix31.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006201136570_ogrTestTakip_ICollections_added.resx">
-      <DependentUpon>202006201136570_ogrTestTakip_ICollections_added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

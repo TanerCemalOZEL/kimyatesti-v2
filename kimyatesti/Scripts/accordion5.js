@@ -1,9 +1,9 @@
 ﻿var allBtn = document.querySelectorAll(".btnOpt");
 var textBox = document.querySelector("#UserAns");
 var soruSayisi = (document.querySelector("#accordionExample").children.length) - 1;
-var sonSoruMu = false;
-var confirmMsg = "Soruların tamamını cevaplamadınız. Kaydetmek istediğinize emin misiniz?";
+//var sonSoruMu = false;
 var testAdi = document.querySelector("#testName").textContent;
+
 // String dizisinde istenen indexteki karakteri değiştirme fonksiyonu.
 
 String.prototype.replaceAt = function (index, char) {

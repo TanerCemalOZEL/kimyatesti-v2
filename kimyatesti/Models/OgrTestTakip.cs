@@ -14,7 +14,7 @@ namespace kimyatesti.Models
         public int OgrenciId { get; set; }
         public int TestGroupId { get; set; }
         public int TestId { get; set; }
-        public DateTime? AtanmaTarihi { get; set; }
+        public DateTime AtanmaTarihi { get; set; }
         public DateTime? TamamlanmaTarihi { get; set; }
         public string CevapList { get; set; }
 

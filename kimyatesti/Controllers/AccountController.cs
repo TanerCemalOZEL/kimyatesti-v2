@@ -6,7 +6,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -36,8 +35,12 @@ namespace kimyatesti.Controllers
             };
         }
         // GET: Account
-        public ActionResult Index()
+        public ActionResult Index(string alertMsg)
         {
+            if (alertMsg != null)
+            {
+                ViewBag.alertMsg = alertMsg;
+            }
             return View();
         }
 
@@ -115,7 +118,6 @@ namespace kimyatesti.Controllers
                 user.LastLogin = DateTime.Now;
                 var hashTxt = EasyEncryption.MD5.ComputeMD5Hash(user.Email + DateTime.Now);
                 user.PhoneNumber = hashTxt;
-
                 var result = userManager.Create(user, model.Password);
 
                 if (result.Succeeded)
@@ -131,7 +133,7 @@ namespace kimyatesti.Controllers
                     dB.OgrenciAvatars.Add(ogrenciAvatar);
                     dB.SaveChanges();
 
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Login", new { alertMsg="Hoşgeldiniz. Kullanıcı adı ve parolanızı kullanarak giriş yapabilirsiniz. E-posta adresinize gönderilen linki tıklayarak hesabınızı aktive etmeyi unutmayın."});
                 }
                 else
                 {
@@ -154,10 +156,10 @@ namespace kimyatesti.Controllers
         }
 
         //[HttpPost]
-        public void SendMail(string receiver, string subject, string message)
+        public void SendMail(string receiver, string subject, string message, string senderMail="info@kimyatesti.com")
         {
 
-            var senderEmail = new MailAddress("info@kimyatesti.com", "Taner OZEL");
+            var senderEmail = new MailAddress(senderMail, "Taner OZEL");
             var receiverEmail = new MailAddress(receiver, "Receiver");
             var password = "8hvt1mqr";
             var body = message;
@@ -183,14 +185,28 @@ namespace kimyatesti.Controllers
         public ActionResult VerifyMail(string uN, string uHt)
         {
             var user = userManager.Users.First(i => i.UserName == uN);
-            //var hash1 = userManager.Users.FirstOrDefault(u => u.UserName == uN).Name;
+
+            //var user = userManager.Find(model.Username, model.Password);
+
+            user.LastLogin = DateTime.Now;
+            userManager.Update(user);
+            var authManager = HttpContext.GetOwinContext().Authentication;
+            var identity = userManager.CreateIdentity(user, "ApplicationCookie");
+            var authProperties = new AuthenticationProperties()
+            {
+                IsPersistent = true
+            };
+            authManager.SignOut();
+            authManager.SignIn(authProperties, identity);
 
             if (user.PhoneNumber == uHt)
             {
                 user.EmailConfirmed = true;
+                user.PhoneNumber = null;
                 userManager.Update(user);
 
                 ViewBag.testData = "her şey yolunda.";
+                return RedirectToAction("index", "dashboard");
             }
             else
             {
@@ -216,9 +232,8 @@ namespace kimyatesti.Controllers
                 var hashTxt = EasyEncryption.MD5.ComputeMD5Hash(user.Email + DateTime.Now);
                 user.PhoneNumber = hashTxt;
                 userManager.Update(user);
-                var mailText = "Aşağıdaki linke tıklayarak şifrenizi sıfırlayabilirsiniz. https://localhost:44395/account/ForgotPassword2?uN=" + user.UserName + "&uHt=" + hashTxt;
+                var mailText = "Aşağıdaki linke tıklayarak şifrenizi sıfırlayabilirsiniz. https://localhost:44395/account/ForgotPassword2?uN=" + CryptoService.Sifrele(user.UserName) + "&uHt=" + hashTxt;
 
-                //var mailText = "Test başarıyla tamamlandı. beni tebrik ederim.";
                 SendMail(user.UserName, "Şifre sıfırlama talebi", mailText);
                 return RedirectToAction("Login");
             }
@@ -233,6 +248,7 @@ namespace kimyatesti.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult ForgotPassword2(ForgotPassword2 model, string uN, string uHt)
@@ -240,7 +256,8 @@ namespace kimyatesti.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = userManager.Users.First(i => i.UserName == uN);
+                var UserName = CryptoService.SifreCoz(uN);
+                var user = userManager.Users.First(i => i.UserName == UserName);
                 Console.WriteLine("test");
                 if (user.PhoneNumber == uHt)
                 {
@@ -256,6 +273,29 @@ namespace kimyatesti.Controllers
                 return View();
             }
             return View();
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Contact(ContactViewModel userMsg)
+        {
+            var mailText = userMsg.UserMessage;
+            if (User.Identity.IsAuthenticated)
+            {
+                mailText += (" " + User.Identity.Name);
+            }
+            if (ModelState.IsValid)
+            {
+                SendMail("tanerozel@live.com", userMsg.Konu, mailText);
+            }
+            return RedirectToAction("index", "dashboard", new { alertMsg = "Mesajınız alınmıştır."});
         }
     }
 }

@@ -1,21 +1,12 @@
-﻿@*@{
-        ViewBag.Title = "AkordiyonTest";
-    }
-
-    <hr />
-
-    @Html.Action("Accordion5", new { id = @ViewBag.Data1 })*@
-
-<hr />
-
-@model IEnumerable<kimyatesti.Models.Soru>
+﻿@model IEnumerable<kimyatesti.Models.Soru>
 @{
     int soruNumber = 1;
     var itemSayisi = Model.ToList().Count();
 }
 
+<hr />
 <div class="accordion" id="accordionExample">
-    <div id="testName" class="card bg-light card-header soruTextOpt pt-2 text-center">
+    <div id="testName" class="card card-header soruTextOpt pt-2 text-center bg-custom-accHeader">
         @ViewBag.data1
     </div>
     @foreach (var item in Model)
@@ -23,12 +14,12 @@
         <div class="card">
             <div class="card-header card-header-Opt">
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-4">
                         <div class="btn soruTextOpt" type="button" data-toggle="collapse" data-target="#acc@(soruNumber)">
                             Soru @soruNumber
                         </div>
                     </div>
-                    <div class="col-7" style="text-align: right;">
+                    <div class="col-8" style="text-align: right;">
                         <div id="@soruNumber" style="display:inline;">
                             <span class="btnOpt">A</span>
                             <span class="btnOpt">B</span>
@@ -42,7 +33,7 @@
             </div>
             @if (Model.ToList().First() == item)
             {
-                <div id="acc@(soruNumber)" class="collapse show text-center" data-parent="#accordionExample">
+                <div id="acc@(soruNumber)" class="collapse show text-center p-3" data-parent="#accordionExample">
                     <div class="card-body p-0">
                         <img class="soruImgOpt" src="~/Assets/@item.ImgPath">
                     </div>
@@ -50,7 +41,7 @@
             }
             else
             {
-                <div id="acc@(soruNumber)" class="collapse text-center" data-parent="#accordionExample">
+                <div id="acc@(soruNumber)" class="collapse text-center p-3" data-parent="#accordionExample">
                     <div class="card-body p-0">
                         <img class="soruImgOpt" src="~/Assets/@item.ImgPath">
                     </div>
@@ -67,7 +58,7 @@
         @using (Html.BeginForm())
         {
             @Html.TextBox("UserAns", "test0", new { @class = "d-none" });
-            <button type="submit" class="btn soruTextOpt mt-2" onclick="return confirm('Emin misiniz?')">
+            <button type="submit" class="btn soruTextOpt mt-2" onclick="return confirm(bosVarmi() > 0 ? bosVarmi() + ' sorunuz boş. Kaydettikten sonra test üzerinde değişiklik yapamazsınız.': 'Cevaplarınızı kaydetmek istediğinize emin misiniz??')">
                 TESTİ KAYDET
             </button>
         }
@@ -78,11 +69,16 @@
 <script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
 
 <script>
-
+    function bosVarmi() {
+        var temp = textBox.value;
+        var count = (temp.match(/0/g) || []).length;
+        return count;
+    }
 </script>
 
 <script type="text/javascript">
     $(document).ready(function () {
+        document.querySelector(".body-content").classList.add("p-0")
         var testAdi = document.querySelector("#testName").textContent;
         var cevapString = localStorage.getItem('cevapStore' + testAdi);
         if (cevapString !== null) {

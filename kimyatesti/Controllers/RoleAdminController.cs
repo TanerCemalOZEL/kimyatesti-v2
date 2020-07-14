@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace kimyatesti.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class RoleAdminController : Controller
     {
         private RoleManager<IdentityRole> roleManager;

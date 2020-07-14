@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
 :root {
     --success-color: #2ecc71;
     --error-color: #f5bb00;
@@ -72,71 +73,86 @@ body {
     position: relative;
 }
 
-.form-control label {
-    color: #ccc;
-    display: block;
-    margin-bottom: 5px;
-}
+    .form-control label {
+        color: #ccc;
+        display: block;
+        margin-bottom: 5px;
+    }
 
-.form-control input {
-    border-radius: 4px;
-    display: block;
-    width: 100%;
-    height: 40px;
-    border: none;
-    outline: none;
-    padding-left: 40px;
-    box-sizing: border-box;
-    font-size: 15px;
-    color: #333;
-    /* margin-bottom: 40px; */
-}
+    .form-control input {
+        border-radius: 4px;
+        display: block;
+        width: 100%;
+        height: 40px;
+        border: none;
+        outline: none;
+        padding-left: 40px;
+        box-sizing: border-box;
+        font-size: 15px;
+        color: #333;
+        /* margin-bottom: 40px; */
+    }
 
-.form-control input:hover {
-    box-shadow: 2px 2px 5px #555;
-    background-color: #ebffb0;
-}
+    .form-control textarea {
+        border-radius: 4px;
+        display: block;
+        width: 100%;
+        height: 200px;
+        border: none;
+        outline: none;
+        padding-left: 40px;
+        padding-top: 8px;
+        box-sizing: border-box;
+        font-size: 15px;
+        font-family: 'Open Sans', sans-serif;
+        color: #333;
+    }
 
-.form-control span {
-    position: relative;
-}
+    .form-control input:hover {
+        box-shadow: 2px 2px 5px #555;
+        background-color: #ebffb0;
+    }
 
-.form-control i {
-    position: absolute;
-    left: 10px;
-    top: 12px;
-    color: #333;
-    font-size: 18px;
-}
+    .form-control span {
+        position: relative;
+    }
 
-.form-control.success input {
-    border: 1px solid var(--success-color);
-}
+    .form-control i {
+        position: absolute;
+        left: 10px;
+        top: 12px;
+        color: #333;
+        font-size: 18px;
+    }
 
-.form-control.error input {
-    border: 1px solid red;
-}
+    .form-control.success input {
+        border: 1px solid var(--success-color);
+    }
 
-.form-control input:focus {
-    outline: 0;
-    border-color: #777;
-}
+    .form-control.error input {
+        border: 1px solid red;
+    }
 
-.form-control small {
-    color: var(--orange-color);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    visibility: hidden;
-}
+    .form-control input:focus {
+        outline: 0;
+        border-color: #777;
+    }
 
-.form-control.error small {
-    visibility: visible;
-}
+    .form-control small {
+        color: var(--orange-color);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        visibility: hidden;
+    }
 
-.form-control p{
-    color: #ffffffcc;
-}
+    .form-control.error small {
+        visibility: visible;
+    }
+
+    .form-control p {
+        color: #ffffffcc;
+    }
 
 /* Butonlar */
 
@@ -156,15 +172,15 @@ body {
     width: 100%;
 }
 
-.form button:hover {
-    cursor: pointer;
-    box-shadow: 4px 4px 5px #77777799;
-    background: linear-gradient(to right top, var(--dark-color), #00bf72, var(--green-color-2));
-}
+    .form button:hover {
+        cursor: pointer;
+        box-shadow: 4px 4px 5px #77777799;
+        background: linear-gradient(to right top, var(--dark-color), #00bf72, var(--green-color-2));
+    }
 
-.form button:focus {
-    outline-color: #fff;
-}
+    .form button:focus {
+        outline-color: #fff;
+    }
 
 
 /*  üye ol ve şifremi unuttum linkleri */
@@ -176,28 +192,42 @@ body {
     margin-top: 20px;
 }
 
-.loginLinks a {
-    text-decoration: none;
-    color: #ffffff60;
-    transition: color 0.3s ease-out 0s;
-}
+    .loginLinks a {
+        text-decoration: none;
+        color: #ffffff60;
+        transition: color 0.3s ease-out 0s;
+    }
 
-.loginLinks a:hover {
-    color: #ffffff99;
-}
+        .loginLinks a:hover {
+            color: #ffffff99;
+        }
 
-ul{
+ul {
     padding-left: 0;
     text-align: center;
     justify-content: center;
 }
-li{
+
+li {
     color: #fff;
     list-style: none;
 }
 
-.formHeading{
+.formHeading {
     color: #ffffff95;
     padding: 0;
     margin: 0;
+}
+
+.b-0{
+    padding-bottom: 0 !important;
+    margin-bottom:0 !important;
+}
+
+.mb-1{
+    margin-bottom: 5px;
+}
+
+.mt-0{
+    margin-top:0 !important;
 }

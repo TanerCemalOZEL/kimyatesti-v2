@@ -1,0 +1,39 @@
+﻿@model kimyatesti.Models.ContactViewModel
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_AccLayout.cshtml";
+}
+
+
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form">
+                <div class="form-control">
+                    <h2 class="formHeading">Paylaşmak istediğiniz bir şeyler mi var?</h2>
+                </div>
+                <div class="form-control pb-1">
+                    <span>
+                        @Html.TextBoxFor(i => i.Konu, new { @placeholder = "Mesajınızın başlığı", type = "text", autocomplete = "off" })
+                        <i class="fas fa-robot"></i>
+                    </span>
+                </div>                
+                <div class="form-control b-0">
+                    <span>
+                        @Html.TextAreaFor(i => i.UserMessage, new { @placeholder = "Mesajınızı bu bölüme yazabilirsiniz. İletişim bilgilerinizi eklemeyi unutmayın.", type = "text", autocomplete = "off"})
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                </div>
+
+                @Html.ValidationSummary()
+
+                <button id="btnSubmit" class="mt-0" type="submit">Gönder</button>
+                <div class="loginLinks">
+                    <a href="/">Ana sayfaya dön</a>
+                </div>
+            </div>
+        }
+    </div>
+

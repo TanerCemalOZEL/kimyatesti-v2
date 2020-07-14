@@ -12,19 +12,29 @@
     </div>
 }
 
-<hr />
 
 @if (User.Identity.IsAuthenticated)
 {
-    <label class="label label-info">
+    @*<label class="label label-info">
         @User.Identity.Name
     </label>
 
-    <a href="/Account/Logout" class="btn btn-danger">Çıkış yap</a>
+    <a href="/Account/Logout" class="btn btn-danger">Çıkış yap</a>*@
 }
 else
 {
     <a href="/Account/Login" class="btn btn-success">Giriş yap</a>
     <a href="/Account/Register" class="btn btn-primary">Kaydol</a>
-
 }
+
+<div class="col-sm-12 mt-2 mb-2 pr-0 pl-0">
+    <div class="card card-ds1">
+        <div class="card-body">
+            <h5 class="card-title">kimyatesti.com<small class="cardDate">07.07.2020</small></h5>
+            <p class="card-text">Şu anda ana sayfada herhangi bir içerik bulunmadığı için sadece bu başlığı görüyorsunuz. Zaten buton da henüz çalışmıyor.</p>
+        </div>
+        <div class="container mb-4">
+            <a href="#" class="btn btn-custom btn-sm">Devamını oku</a>
+        </div>
+    </div>
+</div>

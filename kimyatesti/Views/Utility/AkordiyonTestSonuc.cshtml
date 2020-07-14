@@ -1,0 +1,152 @@
+﻿@model kimyatesti.Models.AkordiyonTestSonucViewModel
+@{
+    ViewBag.Title = "AkordiyonTestSonuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int soruNumber = 1;
+    var itemSayisi = Model.Sorus.ToList().Count();
+    var cevapString = @Model.SoruHistoryLog;
+    var trueString = Model.CorrectAnswers;
+}
+
+<hr />
+
+<div class="accordion" id="accordionExample">
+    <div id="testName" class="card bg-light card-header soruTextOpt pt-2 text-center">
+        @ViewBag.data1 
+        <div id="ans" class="d-none">@cevapString</div>
+        <div id="trueAns" class="d-none">@trueString</div>
+    </div>
+    @foreach (var item in Model.Sorus)
+    {
+        <div class="card">
+            <div class="card-header card-header-Opt">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="btn soruTextOpt" type="button" data-toggle="collapse" data-target="#acc@(soruNumber)">
+                            <span id="check@(soruNumber)"><i class=""></i></span> Soru @soruNumber 
+                        </div>
+                    </div>
+                    <div class="col-8" style="text-align: right;">
+                        <div id="@soruNumber" style="display:inline;">
+                            <span class="btnOpt">A</span>
+                            <span class="btnOpt">B</span>
+                            <span class="btnOpt">C</span>
+                            <span class="btnOpt">D</span>
+                            <span class="btnOpt">E</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="acc@(soruNumber)" class="collapse text-center" data-parent="#accordionExample">
+                <div class="card-body p-0">
+                    <img class="soruImgOpt" src="~/Assets/@item.ImgPath">
+                </div>
+            </div>
+        </div>
+
+        soruNumber++;
+    }
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var cevapString = document.getElementById('ans').textContent;
+        var trueAnswers = document.getElementById('trueAns').textContent;
+        var isCorrect = null;
+
+        if (cevapString !== null) {
+            $(document.querySelector("#acc1")).collapse('hide');
+            var bx = cevapString.split("");
+            var cx = trueAnswers.split("");
+            for (var i = 0; i < bx.length; i++) {
+                let soruIndex = i + 1;
+                let optList = document.querySelector(`#${CSS.escape(soruIndex)}`).children;
+                let accordionBar = document.querySelector(`#${CSS.escape(soruIndex)}`).parentNode.parentNode.parentNode.parentNode;
+                let checker = document.getElementById(`check${i + 1}`);
+                if (bx[i] == cx[i]) {
+                    accordionBar.classList.add("bg-true");
+                    checker.className = ('ml-3 far fa-check-circle text-success');
+                    isCorrect = true;
+                } else if (bx[i] == "0") {
+                    accordionBar.classList.add("bg-empty");
+                    checker.className = ('ml-3 far fa-meh-blank text-primary');
+
+                } else {
+                    accordionBar.classList.add("bg-false");
+                    checker.className = ('ml-3 far fa-times-circle text-danger');
+                    isCorrect = false;
+                }
+
+                let optX;
+
+                switch (bx[i]) {
+                    case 'A':
+                        optX = 0;
+                        break;
+                    case 'B':
+                        optX = 1;
+                        break;
+                    case 'C':
+                        optX = 2;
+                        break;
+                    case 'D':
+                        optX = 3;
+                        break;
+                    case 'E':
+                        optX = 4;
+                        break;
+                    default:
+                        optX = 5;
+                        break;
+                }
+
+                switch (cx[i]) {
+                    case 'A':
+                        optTrue = 0;
+                        break;
+                    case 'B':
+                        optTrue = 1;
+                        break;
+                    case 'C':
+                        optTrue = 2;
+                        break;
+                    case 'D':
+                        optTrue = 3;
+                        break;
+                    case 'E':
+                        optTrue = 4;
+                        break;
+                    default:
+                        optTrue = 5;
+                        break;
+                }
+                optList[optTrue].innerHTML = '<i class="fas fa-check"></i>';
+                optList[optTrue].classList.add("bg-warning");
+
+                if (optX != 5) {
+                    if (isCorrect) {
+                        optList[optX].classList.add("btnOptSelected");
+                        //optList[optX].innerHTML = '<i class="fas fa-check"></i>';
+                    } else if (isCorrect == false) {
+                        optList[optX].classList.add("btnOptFalse");
+                        optList[optX].innerHTML = '<i class="fas fa-times"></i>';
+                        ;
+                    }
+                    document.querySelector(`#acc${soruIndex}`).parentNode.classList.add("cardClicked");
+                }
+            }
+        } else {
+            let initTextBox = "";
+            for (var i = 0; i < @itemSayisi; i++) {
+                initTextBox += "0";
+            }
+            textBox.value = initTextBox;
+        }
+    });
+
+
+</script>

@@ -14,7 +14,8 @@ namespace kimyatesti.Data
         // automatically whenever you change your model schema, please use data migrations.
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
-    
+
+        //public kimyatestiDataContext() : base("name=db17_kimyatesti")
         public kimyatestiDataContext() : base("name=kimyatestiDataContext")
         {
         }
